@@ -1,9 +1,7 @@
 Overview
 ========
 
-This project focused on developing a seamless ELT pipeline using dbt, Apache Airflow, and Metabase on a GCP VM. Data was extracted and loaded into BigQuery using Python, with transformations orchestrated through a dbt DAG triggered via Airflow, leveraging Astro Cosmos for efficient dbt-Airflow integration.  
-
-Data transformation within the OLAP environment (Google BigQuery) included filtering uncanceled invoices, validating customer IDs, and adding new columns to improve visualization clarity. To enhance query performance, partitioning and clustering were implemented for optimized efficiency. Workflow orchestration was managed using Apache Airflow, with Astronomer simplifying deployment. Additionally, the Docker Compose file was customized to incorporate Metabase, enabling dynamic data visualization for deeper insights and more informed decision-making.
+This project implements an end-to-end ELT pipeline using dbt, Apache Airflow, and Metabase on a GCP VM, with Astro Cosmos facilitating seamless dbt-Airflow integration. Raw retail data is extracted, load, cleaned, and transformed in BigQuery, where filtering removes invalid records, new features like total transaction values, country code, date, and time-based categorizations are created, and performance is optimized through partitioning and clustering. Workflow orchestration is managed by Apache Airflow, with Astronomer simplifying deployment, while all components—including Airflow, dbt, and Metabase—run within Docker containers for a scalable and reproducible environment. Metabase provides interactive data visualization, enabling deeper insights into customer transactions, while Docker Compose ensures smooth containerized execution across the entire pipeline.
 
 Project Contents
 ================
