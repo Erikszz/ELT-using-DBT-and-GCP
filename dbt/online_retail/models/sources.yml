@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: retail
+    description: "Raw data from Google BigQuery."
+    database: <gcp project id>
+    schema: retail # name of gbq dataset
+    tables:
+      - name: raw
+        description: "Raw transactional data."
+        columns:
+          - name: InvoiceNo
+            description: "A 6-digit integral number uniquely assigned to each transaction."
+          - name: StockCode
+            description: "Product (item) code."
+          - name: Description
+            description: "Product (item) name."
+          - name: Quantity
+            description: "The quantities of each product (item) per transaction."
+          - name: InvoiceDate
+            description: "The day and time when each transaction was generated."
+          - name: UnitPrice
+            description: "Product price per unit in sterling."
+          - name: CustomerID
+            description: "A 5-digit integral number uniquely assigned to each customer."
+          - name: Country
+            description: "The name of the country where each customer resides."
+

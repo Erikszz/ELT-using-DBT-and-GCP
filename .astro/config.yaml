@@ -1,0 +1,4 @@
+project:
+    name: astro
+webserver:
+    port: "8080"

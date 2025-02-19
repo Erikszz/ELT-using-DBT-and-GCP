@@ -1,0 +1,82 @@
+
+version: 2
+
+models:
+  - name: stg_retail
+    description: "Staging table for raw e-commerce data, ready for transformation."
+    columns:
+      - name: InvoiceNo
+        description: "Unique identifier for each invoice."
+        tests:
+          - not_null
+
+      - name: StockCode
+        description: "Unique code for each product."
+        tests:
+          - not_null
+
+      - name: ProductName
+        description: "Name of the product sold."
+        tests:
+          - not_null
+
+      - name: Quantity
+        description: "Quantity of the product sold in the transaction."
+        tests:
+          - not_null
+
+      - name: InvoiceDate
+        description: "Date and time when the invoice was issued."
+        tests:
+          - not_null
+
+      - name: UnitPrice
+        description: "Price per unit of the product."
+        tests:
+          - not_null
+      
+      - name: CustomerId
+        description: "Unique identifier for the customer."
+        tests:
+          - not_null
+      
+      - name: Country
+        description: "Country where the customer is located."
+        tests:
+          - not_null
+  
+  - name: create_date
+    description: "Extracts the date from the 'InvoiceDate' to provide a column with only the date part."
+    columns:
+      - name: DateOnly
+        description: "The date of the transaction, extracted from the full invoice date."
+        tests:
+          - not_null
+            
+  - name: create_total_price
+    description: "Calculates the total price for each transaction (Quantity * UnitPrice)."
+    columns:
+      - name: TotalPrice
+        description: "The total value of the transaction, calculated by multiplying Quantity by UnitPrice."
+        tests:
+          - not_null
+
+  - name: create_time_category
+    description: "Categorizes the time of transaction based on the hour of the 'InvoiceDate' into periods like Dawn, Morning, Afternoon, Evening, or Night."
+    columns:
+      - name: TimeCategory
+        description: "Categorization of the transaction time into periods based on the hour of the day."
+        tests:
+          - not_null
+
+  - name: create_country_code
+    description: "Create country code in ISO-3166 alpha-2 format based on country like EIRE will be IE."
+    columns:
+      - name: CountryCode
+        description: "The country code format based on ISO-3166 alpha-2."
+        tests:
+          - not_null
+
+  - name: partitioned_clustered_retail
+    description: "Create a partitioned and clustered table."
+
